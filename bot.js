@@ -16,10 +16,10 @@ takeScreenshot()
 .then(function(filePath) {
   var b64content = fs.readFileSync(filePath, { encoding: 'base64' })
   T.post('media/upload', { media_data: b64content }, function (err, data, response) {
-    var status = 'Me beetle.'
+    // var status = 'Me beetle.'
     var mediaIdStr = data.media_id_string
     var params = {
-        status: status,
+        // status: status,
         media_ids: [mediaIdStr]
       }
     T.post('statuses/update', params, function (error, data, response) {
