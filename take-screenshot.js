@@ -1,6 +1,10 @@
 var webshot = require('webshot')
 
 var baseImageUrl = require('./config').beetleImageUrl
+const random = (start, end) => (
+  Math.ceil(start + Math.random() * (end - start))
+)
+var imageUrl = `${baseImageUrl}#/${random(0, 10)}`
 
 var options = {
   screenSize: {
@@ -20,7 +24,6 @@ var options = {
 }
 
 function takeScreenshot() {
-  var imageUrl = baseImageUrl
   console.log('Getting image from here:', imageUrl);
 
   return new Promise(function(resolve, reject) {
@@ -30,6 +33,7 @@ function takeScreenshot() {
       resolve(fileName)
     })
   })
+
 }
 
 module.exports = takeScreenshot
